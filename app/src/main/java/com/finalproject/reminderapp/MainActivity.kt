@@ -3,6 +3,7 @@ package com.finalproject.reminderapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
+//tesing
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
