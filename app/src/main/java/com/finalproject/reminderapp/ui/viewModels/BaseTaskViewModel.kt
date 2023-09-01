@@ -18,31 +18,7 @@ abstract class BaseTaskViewModel : ViewModel() {
     val error: MutableSharedFlow<String> = MutableSharedFlow()
     val finish: MutableSharedFlow<Unit> = MutableSharedFlow()
 
-    protected fun validateAndGetTask(): Task? {
-        val result = Validation.validation(
-            FieldAndTeg(
-                name = "Title",
-                value = title.value,
-                //.means any character, {1,20} means 1 to 20 characters
-                reg = "^(?=.*[A-Z-a-z0-9]).{1,20}\$"
-            ),
-            FieldAndTeg(
-                name = "Description",
-                value = desc.value,
-                reg = ".{1,}"
-            ),
-        )
 
-        if (result.first) {
-            return Task(title = title.value, desc = desc.value,)
-        } else {
-            viewModelScope.launch {
-                error.emit(result.second)
-            }
-        }
-        return null
-
-    }
 
 
 }

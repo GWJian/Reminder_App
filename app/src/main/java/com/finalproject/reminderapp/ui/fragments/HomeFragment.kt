@@ -36,45 +36,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupAdapter()
-
-        lifecycleScope.launch {
-            viewModel.getTasks().collect {
-                if (it.isEmpty()) {
-                    binding.llEmpty.visibility = View.VISIBLE
-                } else {
-                    binding.llEmpty.visibility = View.GONE
-                }
-                adapter.setTasks(it)
-            }
-        }
-
-        binding.eFabAdd.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToAddTaskFragment()
-            NavHostFragment.findNavController(this).navigate(action)
-        }
     }
 
-    fun setupAdapter() {
-        adapter = TaskAdapter(
-            emptyList(),
-            {
-                viewModel.deleteTask(it)
-            },
-            {
-                val action = HomeFragmentDirections.actionHomeFragmentToUpdateTaskFragment(it.id!!)
-                NavHostFragment.findNavController(this).navigate(action)
-            }
 
-        )
-
-
-        val layoutManager = LinearLayoutManager(requireContext())
-
-        //val StaggeredGridLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-
-        binding.rvTask.adapter = adapter
-        binding.rvTask.layoutManager = layoutManager
-    }
 
 }

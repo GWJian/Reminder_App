@@ -14,15 +14,7 @@ class AddTaskViewModel(
     private val repo: TasksRepo
 ) : BaseTaskViewModel() {
 
-    fun addTask() {
-        val task = validateAndGetTask()
-        task?.let {
-            viewModelScope.launch(Dispatchers.IO) {
-                repo.addTask(task)
-                finish.emit(Unit)
-            }
-        }
-    }
+
 
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {

@@ -13,19 +13,6 @@ import com.finalproject.reminderapp.ui.viewModels.UpdatetaskViewModel
 
 class UpdateTaskFragment : BaseTaskFragment() {
 
-    override val viewModel: UpdatetaskViewModel by viewModels {
-        UpdatetaskViewModel.Factory
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.btnSubmit.text = getString(R.string.Update)
-        binding.tvTitleName.text = getString(R.string.Update_task)
-        binding.btnSubmit.setOnClickListener {
-            viewModel.update()
-        }
-
-    }
 
 }

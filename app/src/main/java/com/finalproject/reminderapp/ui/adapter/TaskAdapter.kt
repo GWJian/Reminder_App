@@ -22,7 +22,6 @@ class TaskAdapter(
 
     override fun getItemCount() = tasks.size
 
-
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         val task = tasks[position]
         holder.binding.task = task

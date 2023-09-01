@@ -16,13 +16,6 @@ class AddTaskFragment : BaseTaskFragment() {
         AddTaskViewModel.Factory
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.btnSubmit.setOnClickListener {
-            viewModel.addTask()
-        }
-    }
 
 
 }

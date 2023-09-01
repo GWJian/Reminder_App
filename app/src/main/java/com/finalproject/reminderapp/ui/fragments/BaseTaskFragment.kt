@@ -27,29 +27,4 @@ abstract class BaseTaskFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.lifecycleOwner = viewLifecycleOwner
-        binding.viewModel = viewModel
-
-        viewModel.finish.asLiveData().observe(viewLifecycleOwner) {
-            NavHostFragment.findNavController(this).popBackStack()
-        }
-
-        viewModel.error.asLiveData().observe(viewLifecycleOwner) {
-
-            val snackbar = Snackbar.make(
-                binding.root,
-                it,
-                Snackbar.LENGTH_LONG
-            )
-
-            snackbar.also {
-                it.setBackgroundTint(
-                    ContextCompat.getColor(requireContext(), R.color.red)
-                )
-            }.show()
-
-        }
-    }
 }

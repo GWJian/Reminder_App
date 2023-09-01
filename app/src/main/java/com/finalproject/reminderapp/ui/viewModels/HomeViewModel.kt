@@ -17,15 +17,7 @@ class HomeViewModel(
     private val repo: TasksRepo
 ) : ViewModel() {
 
-    fun getTasks(): Flow<List<Task>> {
-        return repo.getTasks()
-    }
 
-    fun deleteTask(task: Task) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repo.deleteTask(task)
-        }
-    }
 
 
     companion object {
