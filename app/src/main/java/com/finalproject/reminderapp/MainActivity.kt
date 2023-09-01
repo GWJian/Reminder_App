@@ -1,12 +1,9 @@
-package com.finalproject.reminderapp.ui
+package com.finalproject.reminderapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.finalproject.reminderapp.R
-
 
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
