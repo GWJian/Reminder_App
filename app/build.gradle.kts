@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "com.finalproject.reminderapp"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.finalproject.reminderapp"
         minSdk = 31
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
