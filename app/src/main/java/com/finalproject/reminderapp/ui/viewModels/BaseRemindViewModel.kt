@@ -22,12 +22,12 @@ abstract class BaseRemindViewModel(): ViewModel() {
             FieldAndTeg(
                 name = "Title",
                 value = title.value,
-                reg = "^(?=.*[A-Za-z0-9]).{6,20}\$"
+                reg = "^(?=.*[A-Za-z0-9]).{2,20}\$"
             ),
             FieldAndTeg(
                 name = "Description",
                 value = desc.value,
-                reg = "^(?=.*[A-Za-z0-9]).{6,}\$"
+                reg = "^(?=.*[A-Za-z0-9]).{2,}\$"
             ),
             FieldAndTeg(
                 name = "Date",
