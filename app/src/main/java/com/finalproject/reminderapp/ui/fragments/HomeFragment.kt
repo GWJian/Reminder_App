@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
             }
         }
 
-        binding.eFabAdd.setOnClickListener {
+        binding.efabAdd.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToAddRemindFragment()
             NavHostFragment.findNavController(this).navigate(action)
         }
@@ -70,8 +70,8 @@ class HomeFragment : Fragment() {
 
         val layoutManager = LinearLayoutManager(requireContext())
 
-        binding.rvTask.adapter = adapter
-        binding.rvTask.layoutManager = layoutManager
+        binding.rvTasks.adapter = adapter
+        binding.rvTasks.layoutManager = layoutManager
     }
 
 
