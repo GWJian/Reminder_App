@@ -9,4 +9,6 @@
     <string name="add_reminder">Add Reminder</string>
     <string name="no_reminders">No Reminders</string>
     <string name="reminder_app">Reminder App</string>
+    <string name="update">Update</string>
+    <string name="update_task">Update Task</string>
 </resources>
