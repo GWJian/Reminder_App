@@ -9,5 +9,27 @@
         android:id="@+id/homeFragment"
         android:name="com.finalproject.reminderapp.ui.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_addRemindFragment"
+            app:destination="@id/addRemindFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_updateRemindFragment"
+            app:destination="@id/updateRemindFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addRemindFragment"
+        android:name="com.finalproject.reminderapp.ui.fragments.AddRemindFragment"
+        android:label="fragment_add_remind"
+        tools:layout="@layout/fragment_add_update_remind" />
+    <fragment
+        android:id="@+id/updateRemindFragment"
+        android:name="com.finalproject.reminderapp.ui.fragments.UpdateRemindFragment"
+        android:label="fragment_update_remind"
+        tools:layout="@layout/fragment_add_update_remind">
+        <argument
+            android:name="reminderId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

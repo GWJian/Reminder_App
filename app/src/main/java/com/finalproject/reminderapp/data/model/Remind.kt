@@ -4,12 +4,11 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Task(
+data class Remind(
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
     val title: String,
     val desc: String,
-//====================================================
     val date: String,
     val time: String,
 )
