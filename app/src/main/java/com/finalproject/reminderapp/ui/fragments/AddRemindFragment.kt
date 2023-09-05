@@ -29,7 +29,7 @@ class AddRemindFragment: BaseRemindFragment() {
         }
 
         binding.btnDate.setOnClickListener {
-            //call the function getDate() from DateTimeUtil.kt
+
             val date = DateTimeUtil.getDate()
 
             DatePickerDialog(requireContext(), { _, year, month, dayOfMonth ->
@@ -38,7 +38,7 @@ class AddRemindFragment: BaseRemindFragment() {
         }
 
         binding.btnTime.setOnClickListener {
-            //call the function getTime() from DateTimeUtil.kt
+
             val time = DateTimeUtil.getTime()
 
             TimePickerDialog(requireContext(), { _, hour, minute ->

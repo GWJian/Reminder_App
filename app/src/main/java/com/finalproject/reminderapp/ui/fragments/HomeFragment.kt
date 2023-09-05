@@ -38,7 +38,7 @@ class HomeFragment : Fragment() {
         setupAdapter()
 
         lifecycleScope.launch {
-            //if the list is empty show the empty view
+
             viewModel.getReminder().collect {
                 if (it.isEmpty()) {
                     binding.llEmpty.visibility = View.VISIBLE
@@ -55,26 +55,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-//    fun setupAdapter() {
-//        adapter = RemindAdapter(
-//            emptyList(),
-//            {
-//                viewModel.deleteReminder(it)
-//            },
-//            {
-//                val action = HomeFragmentDirections.actionHomeFragmentToUpdateRemindFragment(it.id!!)
-//                NavHostFragment.findNavController(this).navigate(action)
-//            }
-//
-//
-//
-//        )
-//
-//        val layoutManager = LinearLayoutManager(requireContext())
-//
-//        binding.rvReminders.adapter = adapter
-//        binding.rvReminders.layoutManager = layoutManager
-//    }
 
     fun setupAdapter() {
         adapter = RemindAdapter(
