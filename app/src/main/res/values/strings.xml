@@ -10,5 +10,8 @@
     <string name="no_reminders">No Reminders</string>
     <string name="reminder_app">Reminder App</string>
     <string name="update">Update</string>
-    <string name="update_task">Update Task</string>
+    <string name="update_task">Update Reminder</string>
+    <string name="date">Date</string>
+    <string name="the_task_list_is_empty">The task list is empty!</string>
+    <string name="empty">Empty</string>
 </resources>
