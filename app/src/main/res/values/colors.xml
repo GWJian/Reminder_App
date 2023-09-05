@@ -11,7 +11,9 @@
     <color name="green">#1B5E20</color>
     <color name="lime">#76FF03</color>
     <color name="blue">#304FFE</color>
-    <color name="lightGrey">#d3d3d3</color>
+    <color name="lightGrey">#ECE6E6</color>
     <color name="pastelPink">#FF80AB</color>
     <color name="pastelBlue">#80D8FF</color>
+    <color name="pastelPurple">#B388FF</color>
+    <color name="darkGrey">#585858</color>
 </resources>

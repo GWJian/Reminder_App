@@ -27,7 +27,7 @@ class RemindAdapter(
         holder.binding.ivDelete.setOnClickListener {
             onDeleteClick(remind)
         }
-        holder.binding.llTask.setOnClickListener {
+        holder.binding.llReminder.setOnClickListener {
             onClick(remind)
         }
     }

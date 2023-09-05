@@ -27,7 +27,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/red" />
+                android:background="@color/white" />
 
         </LinearLayout>
 
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="48dp"
-            android:background="@color/pastelPink"
+            android:background="@color/gray"
             android:paddingTop="10dp">
 
             <LinearLayout
@@ -43,17 +43,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/no_reminders"
+                    android:text="@string/the_task_list_is_empty"
+                    android:textColor="@color/lightGrey"
+                    android:textStyle="bold|italic"
                     android:textSize="24sp" />
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_list"
+                    android:layout_marginTop="20dp"
+                    android:contentDescription="@string/empty"
+                    app:tint="@color/lightGrey" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvTasks"
+                android:id="@+id/rvReminders"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="16dp" />

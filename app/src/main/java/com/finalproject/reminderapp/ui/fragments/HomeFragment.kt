@@ -55,11 +55,32 @@ class HomeFragment : Fragment() {
         }
     }
 
+//    fun setupAdapter() {
+//        adapter = RemindAdapter(
+//            emptyList(),
+//            {
+//                viewModel.deleteReminder(it)
+//            },
+//            {
+//                val action = HomeFragmentDirections.actionHomeFragmentToUpdateRemindFragment(it.id!!)
+//                NavHostFragment.findNavController(this).navigate(action)
+//            }
+//
+//
+//
+//        )
+//
+//        val layoutManager = LinearLayoutManager(requireContext())
+//
+//        binding.rvReminders.adapter = adapter
+//        binding.rvReminders.layoutManager = layoutManager
+//    }
+
     fun setupAdapter() {
         adapter = RemindAdapter(
             emptyList(),
             {
-                viewModel.deleteReminder(it)
+                viewModel.confirmAndDeleteReminder(requireContext(), it)
             },
             {
                 val action = HomeFragmentDirections.actionHomeFragmentToUpdateRemindFragment(it.id!!)
@@ -70,8 +91,8 @@ class HomeFragment : Fragment() {
 
         val layoutManager = LinearLayoutManager(requireContext())
 
-        binding.rvTasks.adapter = adapter
-        binding.rvTasks.layoutManager = layoutManager
+        binding.rvReminders.adapter = adapter
+        binding.rvReminders.layoutManager = layoutManager
     }
 
 
