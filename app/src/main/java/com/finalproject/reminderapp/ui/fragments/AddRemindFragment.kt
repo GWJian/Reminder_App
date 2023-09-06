@@ -23,6 +23,9 @@ class AddRemindFragment: BaseRemindFragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+        binding.ivBack.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
 
         binding.btnSubmit.setOnClickListener {
             viewModel.addReminder()

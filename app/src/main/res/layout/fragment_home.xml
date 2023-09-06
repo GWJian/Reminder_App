@@ -27,7 +27,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/white" />
+                android:background="@color/darkGrey" />
 
         </LinearLayout>
 
@@ -84,7 +84,7 @@
             app:backgroundTint="@color/cyan"
             android:layout_marginBottom="20dp"
             app:shapeAppearanceOverlay="@style/RoundedButton"
-            android:contentDescription="Fab" />
+            android:contentDescription="@string/fab" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
