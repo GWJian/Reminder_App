@@ -1,8 +1,6 @@
 package com.finalproject.reminderapp.ui.viewModels
 
-import android.content.Context
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -27,29 +25,6 @@ class HomeViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             repo.deleteRemind(remind)
         }
-    }
-
-    fun confirmAndDeleteReminder(context: Context, remind: Remind) {
-        val builder = AlertDialog.Builder(context)
-        builder.setTitle("Confirm Delete")
-        builder.setMessage("Are you sure you want to delete this reminder?")
-
-        builder.setPositiveButton("Yes") { dialog, _ ->
-            deleteReminder(remind)
-            showToast(context, "The reminder has been deleted successfully!")
-            dialog.dismiss()
-        }
-
-        builder.setNegativeButton("No") { dialog, _ ->
-            dialog.dismiss()
-        }
-
-        val deleteConfirmationDialog = builder.create()
-        deleteConfirmationDialog.show()
-    }
-
-    private fun showToast(context: Context, message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
 
 
