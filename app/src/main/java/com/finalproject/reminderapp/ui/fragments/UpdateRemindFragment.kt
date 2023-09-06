@@ -18,6 +18,10 @@ class UpdateRemindFragment : BaseRemindFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.ivBack.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
         binding.btnSubmit.text = getString(R.string.update)
         binding.tvTitleName.text = getString(R.string.update_task)
 
