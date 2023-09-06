@@ -2,14 +2,12 @@ package com.finalproject.reminderapp.ui.fragments
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
-import com.finalproject.reminderapp.R
+import androidx.lifecycle.asLiveData
+
 import com.finalproject.reminderapp.ui.utils.DateTimeUtil
 import com.finalproject.reminderapp.ui.viewModels.AddRemindViewModel
 
@@ -29,6 +27,10 @@ class AddRemindFragment: BaseRemindFragment() {
 
         binding.btnSubmit.setOnClickListener {
             viewModel.addReminder()
+        }
+
+        viewModel.finish.asLiveData().observe(viewLifecycleOwner) {
+            Toast.makeText(context, "Added Successfully", Toast.LENGTH_LONG).show()
         }
 
         binding.btnDate.setOnClickListener {
