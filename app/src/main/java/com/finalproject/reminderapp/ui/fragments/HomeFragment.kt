@@ -1,16 +1,17 @@
 package com.finalproject.reminderapp.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.finalproject.reminderapp.MyApplication
 import com.finalproject.reminderapp.data.model.Remind
 import com.finalproject.reminderapp.databinding.FragmentHomeBinding
 import com.finalproject.reminderapp.ui.adapter.RemindAdapter
@@ -59,14 +60,21 @@ class HomeFragment : Fragment() {
     }
 
 
-    fun confirmAndDeleteReminder( remind: Remind) {
+    //confirm and delete the reminder also cancel the alarm
+    fun confirmAndDeleteReminder(remind: Remind) {
         val builder = AlertDialog.Builder(requireContext())
+        val scheduler = (requireActivity().application as MyApplication).scheduler
+
         builder.setTitle("Confirm Delete")
         builder.setMessage("Are you sure you want to delete this reminder?")
 
         builder.setPositiveButton("Yes") { dialog, _ ->
             viewModel.deleteReminder(remind)
-            Toast.makeText(requireContext(), "The reminder has been deleted successfully!", Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                requireContext(),
+                "The reminder has been deleted successfully!",
+                Toast.LENGTH_LONG
+            ).show()
             dialog.dismiss()
         }
 
@@ -78,6 +86,9 @@ class HomeFragment : Fragment() {
         deleteConfirmationDialog.show()
     }
 
+
+
+
     fun setupAdapter() {
         adapter = RemindAdapter(
             emptyList(),
@@ -85,7 +96,8 @@ class HomeFragment : Fragment() {
                 confirmAndDeleteReminder(it)
             },
             {
-                val action = HomeFragmentDirections.actionHomeFragmentToUpdateRemindFragment(it.id!!)
+                val action =
+                    HomeFragmentDirections.actionHomeFragmentToUpdateRemindFragment(it.id!!)
                 NavHostFragment.findNavController(this).navigate(action)
             }
 

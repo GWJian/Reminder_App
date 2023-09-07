@@ -8,7 +8,6 @@ import android.util.Log
 import com.finalproject.reminderapp.AlamReceiver
 import com.finalproject.reminderapp.AlamScheduler
 import com.finalproject.reminderapp.data.model.AlarmItem
-import com.finalproject.reminderapp.data.model.Remind
 import java.time.ZoneId
 
 class AndroidAlarmScheduler(
@@ -41,7 +40,8 @@ class AndroidAlarmScheduler(
         )
     }
 
-    override fun cancel(alarmItem: Remind) {
+    override fun cancel(alarmItem: AlarmItem) {
+        Log.d("AlarmClockTrigger","Alarm cancel")
         alarmManager.cancel(
             PendingIntent.getBroadcast(
                 context,

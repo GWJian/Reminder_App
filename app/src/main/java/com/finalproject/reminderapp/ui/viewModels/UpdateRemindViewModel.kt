@@ -31,6 +31,10 @@ class UpdateRemindViewModel(
         update()
     }
 
+    override fun toggleSwitch() {
+        //TODO
+    }
+
     init {
         viewModelScope.launch(Dispatchers.IO) {
             val res = repo.getRemindById(id)
