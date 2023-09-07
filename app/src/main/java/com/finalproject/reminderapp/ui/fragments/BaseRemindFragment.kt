@@ -9,19 +9,25 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.NavHostFragment
 import com.finalproject.reminderapp.R
+import com.finalproject.reminderapp.data.model.AlarmItem
+import com.finalproject.reminderapp.data.repo.AndroidAlarmScheduler
 import com.finalproject.reminderapp.databinding.FragmentAddUpdateRemindBinding
 import com.finalproject.reminderapp.ui.viewModels.BaseRemindViewModel
 import com.google.android.material.snackbar.Snackbar
+import java.time.LocalDateTime
 
 abstract class BaseRemindFragment : Fragment() {
     abstract val viewModel: BaseRemindViewModel
+    var alarmItem: AlarmItem? = null
+    lateinit var scheduler: AndroidAlarmScheduler
+
     protected lateinit var binding: FragmentAddUpdateRemindBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentAddUpdateRemindBinding.inflate(inflater,container,false)
+        binding = FragmentAddUpdateRemindBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -29,6 +35,36 @@ abstract class BaseRemindFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
+        scheduler = AndroidAlarmScheduler(requireContext())
+
+        binding.btnSubmit.setOnClickListener {
+            //abstract and submit the reminder to the database
+            viewModel.submit()
+
+            //get the date and time from the user and set it to the alamItem
+            val dateTime = viewModel.getCustomDateTime()
+            if (dateTime == null) {
+                //TODO
+            } else {
+                //get the date and time from the user and set it to the alamItem
+                val (year, month, day) = dateTime.date
+                val (hour, minute) = dateTime.time
+
+                val localDateTime = LocalDateTime.of(
+                    year,
+                    month,
+                    day,
+                    hour,
+                    minute,
+                    0
+                )
+                //this alamItem will be used to schedule the alarm in the AndroidAlarmScheduler.kt
+                alarmItem = AlarmItem(localDateTime, binding.tvTitle.text.toString())
+                alarmItem?.let {
+                    val task = scheduler.schedule(it)
+                }
+            }
+        }
 
         viewModel.finish.asLiveData().observe(viewLifecycleOwner) {
             NavHostFragment.findNavController(this).popBackStack()

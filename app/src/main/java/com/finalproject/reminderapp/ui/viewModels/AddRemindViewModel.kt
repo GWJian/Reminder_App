@@ -24,6 +24,12 @@ class AddRemindViewModel(
     }
 
 
+    override fun submit() {
+        //override the submit function from the BaseRemindViewModel
+        addReminder()
+    }
+
+
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {

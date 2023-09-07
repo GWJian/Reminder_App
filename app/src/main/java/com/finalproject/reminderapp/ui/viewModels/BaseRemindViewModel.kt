@@ -3,6 +3,9 @@ package com.finalproject.reminderapp.ui.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.finalproject.reminderapp.data.model.Remind
+import com.finalproject.reminderapp.ui.model.CustomDate
+import com.finalproject.reminderapp.ui.model.CustomDateTime
+import com.finalproject.reminderapp.ui.model.CustomTime
 import com.finalproject.reminderapp.ui.utils.FieldAndTeg
 import com.finalproject.reminderapp.ui.utils.Validation
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -16,6 +19,8 @@ abstract class BaseRemindViewModel(): ViewModel() {
     val time: MutableStateFlow<String> = MutableStateFlow("")
     val error: MutableSharedFlow<String> = MutableSharedFlow()
     val finish: MutableSharedFlow<Unit> = MutableSharedFlow()
+    protected var customDate: CustomDate? = null
+    protected var customTime: CustomTime? = null
 
     protected fun validateAndGetReminder(): Remind? {
         val result = Validation.validation(
@@ -55,4 +60,32 @@ abstract class BaseRemindViewModel(): ViewModel() {
         }
         return null
     }
+
+    fun setCustomTime(hh: Int, mm: Int) {
+        //set the time to the customTime
+        customTime = CustomTime(hh, mm)
+    }
+
+    fun setCustomDate(yy: Int, mm: Int, dd: Int) {
+        //set the date to the customDate
+        customDate = CustomDate(yy, mm, dd)
+    }
+
+    //get the date and time from the user and set it to the alamItem
+    fun getCustomDateTime(): CustomDateTime? {
+        //check if the user has selected the date and time, if not return null
+        if (customTime == null || customDate == null) {
+            return null
+        }
+
+        //CustomDateTime is a data class that contains the date and time, it will be used to set the alarm
+        return CustomDateTime(
+            customDate!!,
+            customTime!!
+        )
+    }
+
+    //abstract function to submit the reminder, this function will be implemented in the AddRemindViewModel.kt and UpdateRemindViewModel.kt
+    abstract fun submit()
+
 }

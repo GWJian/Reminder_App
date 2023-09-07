@@ -16,6 +16,20 @@ class UpdateRemindViewModel(
 ) : BaseRemindViewModel() {
     val id = savedStateHandle.get<Int>("reminderId") ?: -1
 
+    fun update() {
+        val task = validateAndGetReminder()
+        task?.let {
+            viewModelScope.launch(Dispatchers.IO) {
+                repo.addRemind(it.copy(id))
+                finish.emit(Unit)
+            }
+        }
+    }
+
+    override fun submit() {
+        //override the submit function from the BaseRemindViewModel
+        update()
+    }
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
@@ -25,16 +39,25 @@ class UpdateRemindViewModel(
                 desc.value = it.desc
                 date.value = it.date
                 time.value = it.time
-            }
-        }
-    }
 
-    fun update() {
-        val task = validateAndGetReminder()
-        task?.let {
-            viewModelScope.launch(Dispatchers.IO) {
-                repo.addRemind(it.copy(id))
-                finish.emit(Unit)
+                //split the date by / to get the day, month and year
+                val dateTemp = it.date.split("/")
+                //dateTemp.size == 3 means that the date is in the format dd/mm/yyyy
+                if (dateTemp.size == 3) {
+                    setCustomDate(
+                        dd = dateTemp[0].toInt(),
+                        mm = dateTemp[1].toInt(),
+                        yy = dateTemp[2].toInt()
+                    )
+                }
+
+                //split the time by : to get the hour and minute
+                val dateTime = it.date.split(":")
+                //dateTime.size == 2 means that the time is in the format hh:mm
+                if (dateTime.size == 2) {
+                    setCustomTime(hh = dateTime[0].toInt(), mm = dateTime[1].toInt())
+                }
+
             }
         }
     }
