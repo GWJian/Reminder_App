@@ -18,6 +18,7 @@ abstract class BaseRemindViewModel(): ViewModel() {
     val desc: MutableStateFlow<String> = MutableStateFlow("")
     val date: MutableStateFlow<String> = MutableStateFlow("")
     val time: MutableStateFlow<String> = MutableStateFlow("")
+    val isActive:MutableStateFlow<Boolean> = MutableStateFlow(false)
     val error: MutableSharedFlow<String> = MutableSharedFlow()
     val finish: MutableSharedFlow<Unit> = MutableSharedFlow()
     protected var customDate: CustomDate? = null
@@ -53,6 +54,7 @@ abstract class BaseRemindViewModel(): ViewModel() {
                 desc = desc.value,
                 date = date.value,
                 time = time.value,
+                isActive = isActive.value
             )
         } else {
             viewModelScope.launch {
@@ -91,5 +93,6 @@ abstract class BaseRemindViewModel(): ViewModel() {
 
     //toggleSwitch function will be implemented in the AddRemindViewModel.kt and UpdateRemindViewModel.kt
     abstract fun toggleSwitch()
+
 
 }

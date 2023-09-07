@@ -11,7 +11,6 @@ import androidx.navigation.fragment.NavHostFragment
 import com.finalproject.reminderapp.MyApplication
 import com.finalproject.reminderapp.R
 import com.finalproject.reminderapp.data.model.AlarmItem
-import com.finalproject.reminderapp.data.repo.AndroidAlarmScheduler
 import com.finalproject.reminderapp.databinding.FragmentAddUpdateRemindBinding
 import com.finalproject.reminderapp.ui.viewModels.BaseRemindViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -42,6 +41,7 @@ abstract class BaseRemindFragment : Fragment() {
             viewModel.toggleSwitch()
 
             val dateTimes = viewModel.getCustomDateTime()
+
             val alarmItem = dateTimes?.let { dateTime ->
                 val (year, month, day) = dateTime.date
                 val (hour, minute) = dateTime.time
@@ -88,8 +88,6 @@ abstract class BaseRemindFragment : Fragment() {
 //                }
 //            }
         }
-
-
 
 
         viewModel.finish.asLiveData().observe(viewLifecycleOwner) {

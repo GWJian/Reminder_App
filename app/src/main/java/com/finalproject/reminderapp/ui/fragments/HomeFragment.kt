@@ -20,7 +20,6 @@ import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
-
     private lateinit var binding: FragmentHomeBinding
     private val viewModel: HomeViewModel by viewModels {
         HomeViewModel.Factory
@@ -63,13 +62,13 @@ class HomeFragment : Fragment() {
     //confirm and delete the reminder also cancel the alarm
     fun confirmAndDeleteReminder(remind: Remind) {
         val builder = AlertDialog.Builder(requireContext())
-        val scheduler = (requireActivity().application as MyApplication).scheduler
 
         builder.setTitle("Confirm Delete")
         builder.setMessage("Are you sure you want to delete this reminder?")
 
         builder.setPositiveButton("Yes") { dialog, _ ->
             viewModel.deleteReminder(remind)
+
             Toast.makeText(
                 requireContext(),
                 "The reminder has been deleted successfully!",
@@ -78,6 +77,7 @@ class HomeFragment : Fragment() {
             dialog.dismiss()
         }
 
+
         builder.setNegativeButton("No") { dialog, _ ->
             dialog.dismiss()
         }
@@ -85,8 +85,6 @@ class HomeFragment : Fragment() {
         val deleteConfirmationDialog = builder.create()
         deleteConfirmationDialog.show()
     }
-
-
 
 
     fun setupAdapter() {

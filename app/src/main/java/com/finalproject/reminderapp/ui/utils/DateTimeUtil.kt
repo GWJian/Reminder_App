@@ -1,7 +1,9 @@
 package com.finalproject.reminderapp.ui.utils
 
+import com.finalproject.reminderapp.data.model.AlarmItem
 import com.finalproject.reminderapp.ui.model.CustomDate
 import com.finalproject.reminderapp.ui.model.CustomTime
+import java.time.LocalDateTime
 import java.util.Calendar
 
 object DateTimeUtil {
@@ -21,6 +23,33 @@ object DateTimeUtil {
         val minute = calendar.get(Calendar.MINUTE)
 
         return CustomTime(hour, minute)
+    }
+
+    fun String.getDate(): CustomDate? {
+        val dateTemp = this.split("/")
+
+        return if (dateTemp.size == 3) {
+            CustomDate(
+                dateTemp[2].toInt(),
+                dateTemp[1].toInt(),
+                dateTemp[0].toInt(),
+            )
+        } else {
+            null
+        }
+    }
+
+    fun String.getTime(): CustomTime? {
+        val dateTime = this.split(":")
+
+        return if (dateTime.size == 2) {
+            CustomTime(
+                dateTime[1].toInt(),
+                dateTime[0].toInt(),
+            )
+        } else {
+            null
+        }
     }
 
 }
