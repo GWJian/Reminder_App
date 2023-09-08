@@ -15,4 +15,6 @@
     <string name="the_task_list_is_empty">The task list is empty!</string>
     <string name="empty">Empty</string>
     <string name="fab">Fab</string>
+    <string name="pause">Pause</string>
+    <string name="start">Start</string>
 </resources>

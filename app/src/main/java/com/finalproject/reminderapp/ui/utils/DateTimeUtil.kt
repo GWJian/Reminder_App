@@ -1,15 +1,18 @@
 package com.finalproject.reminderapp.ui.utils
 
+import com.finalproject.reminderapp.ui.model.CustomDate
+import com.finalproject.reminderapp.ui.model.CustomTime
 import java.util.Calendar
 
 object DateTimeUtil {
+
     fun getDate(): CustomDate {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
         val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
 
-        return CustomDate(year, month + 1, dayOfMonth)
+        return CustomDate(year, month, dayOfMonth)
     }
 
     fun getTime(): CustomTime {
@@ -21,14 +24,3 @@ object DateTimeUtil {
     }
 
 }
-
-data class CustomDate(
-    val year: Int,
-    val month: Int,
-    val day: Int
-)
-
-data class CustomTime(
-    val hour: Int,
-    val minute: Int,
-)

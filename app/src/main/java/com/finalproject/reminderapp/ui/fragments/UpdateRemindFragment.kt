@@ -25,14 +25,12 @@ class UpdateRemindFragment : BaseRemindFragment() {
         binding.btnSubmit.text = getString(R.string.update)
         binding.tvTitleName.text = getString(R.string.update_task)
 
-        binding.btnSubmit.setOnClickListener {
-            viewModel.update()
-        }
-
         binding.btnDate.setOnClickListener {
             val date = DateTimeUtil.getDate()
+
             DatePickerDialog(requireContext(), { _, year, month, dayOfMonth ->
                 binding.tvDate.text = "$dayOfMonth/${month + 1}/$year"
+                viewModel.setCustomDate(year, month + 1, dayOfMonth)
             }, date.year, date.month, date.day).show()
         }
 
@@ -41,6 +39,7 @@ class UpdateRemindFragment : BaseRemindFragment() {
 
             TimePickerDialog(requireContext(), { _, hour, minute ->
                 binding.tvTime.text = "$hour:$minute"
+                viewModel.setCustomTime(hour, minute)
             }, time.hour, time.minute, true).show()
         }
 
