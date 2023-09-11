@@ -91,8 +91,6 @@ abstract class BaseRemindViewModel(): ViewModel() {
     //abstract function to submit the reminder, this function will be implemented in the AddRemindViewModel.kt and UpdateRemindViewModel.kt
     abstract fun submit()
 
-    //toggleSwitch function will be implemented in the AddRemindViewModel.kt and UpdateRemindViewModel.kt
-    abstract fun toggleSwitch()
 
 
 }

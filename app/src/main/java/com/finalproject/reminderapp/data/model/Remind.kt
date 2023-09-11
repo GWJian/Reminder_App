@@ -1,9 +1,13 @@
 package com.finalproject.reminderapp.data.model
 
+import android.os.Parcel
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 import java.time.LocalDateTime
 
+@Parcelize
 @Entity
 data class Remind(
     @PrimaryKey(autoGenerate = true)
@@ -13,10 +17,11 @@ data class Remind(
     val date: String,
     val time: String,
     val isActive: Boolean = false, //to check is the alarm active or not
-) {
+): Parcelable {
+    //Combine AlarmItem to Remind
     fun toAlarmItem(): AlarmItem? {
         val dateTemp = this.date.split("/")
-        val dateTime = this.date.split(":")
+        val dateTime = this.time.split(":")
 
         return if (dateTemp.size == 3 && dateTime.size == 2) {
 

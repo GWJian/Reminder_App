@@ -24,12 +24,8 @@ class AddRemindViewModel(
     }
 
     override fun submit() {
-        //override the submit function from the BaseRemindViewModel
+        //override the submit function from the BaseRemindViewModel, to add the reminder to the database
         addReminder()
-    }
-
-    override fun toggleSwitch() {
-        //TODO
     }
 
 

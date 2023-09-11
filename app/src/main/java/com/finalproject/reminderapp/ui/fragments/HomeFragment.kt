@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.finalproject.reminderapp.MyApplication
+import com.finalproject.reminderapp.data.model.AlarmItem
 import com.finalproject.reminderapp.data.model.Remind
 import com.finalproject.reminderapp.databinding.FragmentHomeBinding
 import com.finalproject.reminderapp.ui.adapter.RemindAdapter
@@ -59,8 +60,8 @@ class HomeFragment : Fragment() {
     }
 
 
-    //confirm and delete the reminder also cancel the alarm
-    fun confirmAndDeleteReminder(remind: Remind) {
+    //confirm and cancel the reminder at the same time, when the user clicks on the delete button
+    fun confirmAndDeleteReminder(remind: Remind, alarmItem: AlarmItem? = null) {
         val builder = AlertDialog.Builder(requireContext())
 
         builder.setTitle("Confirm Delete")
@@ -76,7 +77,6 @@ class HomeFragment : Fragment() {
             ).show()
             dialog.dismiss()
         }
-
 
         builder.setNegativeButton("No") { dialog, _ ->
             dialog.dismiss()

@@ -13,6 +13,7 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
+        //initialize the scheduler and the repo in the application class so that it can be accessed from anywhere in the app
         scheduler = AndroidAlarmScheduler(this)
 
         val remindDataBase = Room.databaseBuilder(

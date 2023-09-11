@@ -33,9 +33,6 @@ class UpdateRemindViewModel(
         update()
     }
 
-    override fun toggleSwitch() {
-        //TODO
-    }
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
