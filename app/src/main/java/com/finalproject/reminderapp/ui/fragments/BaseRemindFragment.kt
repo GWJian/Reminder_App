@@ -49,15 +49,23 @@ abstract class BaseRemindFragment : Fragment() {
         //only show Stop Button if the fragment is UpdateRemindFragment, otherwise hide it
         if (this is UpdateRemindFragment) {
             binding.btnStop.visibility = View.VISIBLE
-            //cancel the alarm when the stop button is clicked
             binding.btnStop.setOnClickListener {
+                //cancel the alarm when the stop button is clicked and show to user Toast
                 Log.d("AlarmClockTrigger", "Alarm Cancelled")
                 lifecycleScope.launch {
                     alarmItem?.let {
                         scheduler.cancel(it)
                     }
                 }
+                Snackbar.make(
+                    binding.root,
+                    "Reminder Cancelled",
+                    Snackbar.LENGTH_LONG
+                ).show()
+
             }
+
+
         } else {
             binding.btnStop.visibility = View.GONE
         }
