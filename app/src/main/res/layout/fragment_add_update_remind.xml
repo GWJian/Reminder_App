@@ -27,7 +27,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="20dp">
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="30dp">
 
                 <ImageView
                     android:id="@+id/ivBack"
@@ -88,7 +89,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="40dp">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnDate"
@@ -129,14 +130,11 @@
                     android:text="@={viewModel.time}" />
             </LinearLayout>
 
-
-
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSubmit"
-                android:layout_width="300dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="60dp"
                 android:backgroundTint="@color/purple"
                 android:text="@string/add"
                 app:cornerRadius="10dp" />

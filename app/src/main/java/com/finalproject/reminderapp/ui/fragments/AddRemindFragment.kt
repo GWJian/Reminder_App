@@ -19,6 +19,10 @@ class AddRemindFragment : BaseRemindFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.ivBack.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
         binding.btnDate.setOnClickListener {
             val date = DateTimeUtil.getDate()
 
