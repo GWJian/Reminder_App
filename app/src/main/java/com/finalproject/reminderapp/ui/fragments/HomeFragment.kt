@@ -70,12 +70,7 @@ class HomeFragment : Fragment() {
 
         builder.setPositiveButton("Yes") { dialog, _ ->
 
-            //cancel the alarm when the delete button is clicked
-            lifecycleScope.launch {
-                alarmItem?.let {
-                    scheduler.cancel(it)
-                }
-            }
+            //TODO:cancel the alarm when user click yes
 
             viewModel.deleteReminder(remind)
 

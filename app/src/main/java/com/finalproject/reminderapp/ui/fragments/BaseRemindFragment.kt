@@ -46,31 +46,14 @@ abstract class BaseRemindFragment : Fragment() {
             binding.tvDate.text = it
         }
 
-        //only show Stop Button if the fragment is UpdateRemindFragment, otherwise hide it
-        if (this is UpdateRemindFragment) {
-            binding.btnStop.visibility = View.VISIBLE
-            binding.btnStop.setOnClickListener {
-                //cancel the alarm when the stop button is clicked and show to user Toast
-                Log.d("AlarmClockTrigger", "Alarm Cancelled")
-                lifecycleScope.launch {
-                    alarmItem?.let {
-                        scheduler.cancel(it)
-                    }
-                }
-                Snackbar.make(
-                    binding.root,
-                    "Reminder Cancelled",
-                    Snackbar.LENGTH_LONG
-                ).show()
-
-            }
-
-
-        } else {
-            binding.btnStop.visibility = View.GONE
+        //get time from the viewModel and cancel the alarm
+        binding.btnStop.setOnClickListener {
+            //TODO: need to get the time and date from the database to cancel the alarm
         }
 
+
         binding.btnSubmit.setOnClickListener {
+            //TODO: need to get time,date and title from database to click update again
             //abstract and submit the reminder to the database
             viewModel.submit()
 

@@ -25,8 +25,6 @@ class UpdateRemindFragment : BaseRemindFragment() {
         binding.btnSubmit.text = getString(R.string.update)
         binding.tvTitleName.text = getString(R.string.update_task)
 
-
-
         binding.btnDate.setOnClickListener {
             val date = DateTimeUtil.getDate()
 
