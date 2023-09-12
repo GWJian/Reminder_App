@@ -20,7 +20,6 @@ class HomeViewModel(
         return repo.getRemind()
     }
 
-
     fun deleteReminder(remind: Remind) {
         viewModelScope.launch(Dispatchers.IO) {
             repo.deleteRemind(remind)

@@ -17,4 +17,5 @@
     <string name="fab">Fab</string>
     <string name="pause">Pause</string>
     <string name="start">Start</string>
+    <string name="stop">Stop</string>
 </resources>

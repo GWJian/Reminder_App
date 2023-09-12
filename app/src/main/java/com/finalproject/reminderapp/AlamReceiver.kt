@@ -12,13 +12,14 @@ import androidx.core.app.NotificationManagerCompat
 
 
 class AlamReceiver : BroadcastReceiver() {
-
     //this is boardcastreceiver,we can do all the visual things here,like notification to the user or play a sound etc.
+
 //    override fun onReceive(context: Context, intent: Intent) {
 //        val message = intent.getStringExtra("EXTRA_MESSAGE") ?: return
 //        println("AlarmClockTrigger $message")
 //    }
 
+    //context is the powerful object that can do anything in the app,it can do anything in the app.
     override fun onReceive(context: Context, intent: Intent) {
         val message = intent.getStringExtra("EXTRA_MESSAGE") ?: return
 

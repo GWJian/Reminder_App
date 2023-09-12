@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.finalproject.reminderapp.MyApplication
+import com.finalproject.reminderapp.data.model.AlarmItem
 import com.finalproject.reminderapp.data.model.Remind
 import com.finalproject.reminderapp.databinding.FragmentHomeBinding
 import com.finalproject.reminderapp.ui.adapter.RemindAdapter
@@ -19,7 +20,6 @@ import com.finalproject.reminderapp.ui.viewModels.HomeViewModel
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
-
 
     private lateinit var binding: FragmentHomeBinding
     private val viewModel: HomeViewModel by viewModels {
@@ -60,8 +60,8 @@ class HomeFragment : Fragment() {
     }
 
 
-    //confirm and delete the reminder also cancel the alarm
-    fun confirmAndDeleteReminder(remind: Remind) {
+    //confirm and cancel the reminder at the same time, when the user clicks on the delete button
+    fun confirmAndDeleteReminder(remind: Remind, alarmItem: AlarmItem? = null) {
         val builder = AlertDialog.Builder(requireContext())
         val scheduler = (requireActivity().application as MyApplication).scheduler
 
@@ -69,7 +69,11 @@ class HomeFragment : Fragment() {
         builder.setMessage("Are you sure you want to delete this reminder?")
 
         builder.setPositiveButton("Yes") { dialog, _ ->
+
+            //TODO:cancel the alarm when user click yes
+
             viewModel.deleteReminder(remind)
+
             Toast.makeText(
                 requireContext(),
                 "The reminder has been deleted successfully!",
@@ -85,8 +89,6 @@ class HomeFragment : Fragment() {
         val deleteConfirmationDialog = builder.create()
         deleteConfirmationDialog.show()
     }
-
-
 
 
     fun setupAdapter() {

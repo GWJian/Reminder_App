@@ -3,6 +3,7 @@ package com.finalproject.reminderapp.ui.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.finalproject.reminderapp.data.model.AlarmItem
 import com.finalproject.reminderapp.data.model.Remind
 import com.finalproject.reminderapp.ui.model.CustomDate
 import com.finalproject.reminderapp.ui.model.CustomDateTime
@@ -18,6 +19,7 @@ abstract class BaseRemindViewModel(): ViewModel() {
     val desc: MutableStateFlow<String> = MutableStateFlow("")
     val date: MutableStateFlow<String> = MutableStateFlow("")
     val time: MutableStateFlow<String> = MutableStateFlow("")
+    //val isActive:MutableStateFlow<Boolean> = MutableStateFlow(false)
     val error: MutableSharedFlow<String> = MutableSharedFlow()
     val finish: MutableSharedFlow<Unit> = MutableSharedFlow()
     protected var customDate: CustomDate? = null
@@ -44,15 +46,15 @@ abstract class BaseRemindViewModel(): ViewModel() {
                 name = "Time",
                 value = time.value,
                 reg = ".{1,}"
-            ),
+            ),)
 
-            )
         if (result.first) {
             return Remind(
                 title = title.value,
                 desc = desc.value,
                 date = date.value,
                 time = time.value,
+                //isActive = isActive.value
             )
         } else {
             viewModelScope.launch {
@@ -89,7 +91,6 @@ abstract class BaseRemindViewModel(): ViewModel() {
     //abstract function to submit the reminder, this function will be implemented in the AddRemindViewModel.kt and UpdateRemindViewModel.kt
     abstract fun submit()
 
-    //toggleSwitch function will be implemented in the AddRemindViewModel.kt and UpdateRemindViewModel.kt
-    abstract fun toggleSwitch()
+
 
 }

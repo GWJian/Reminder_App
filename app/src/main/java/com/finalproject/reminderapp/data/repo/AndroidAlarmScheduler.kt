@@ -8,23 +8,24 @@ import android.util.Log
 import com.finalproject.reminderapp.AlamReceiver
 import com.finalproject.reminderapp.AlamScheduler
 import com.finalproject.reminderapp.data.model.AlarmItem
+import com.finalproject.reminderapp.data.model.Remind
 import java.time.ZoneId
 
 class AndroidAlarmScheduler(
     private val context: Context
 ) : AlamScheduler {
-
     private val alarmManager = context.getSystemService(AlarmManager::class.java)
 
     //schedule() is used to schedule the alarm to be delivered at the specified time.
     override fun schedule(alarmItem: AlarmItem) {
         val intent = Intent(context, AlamReceiver::class.java).apply {
             putExtra("EXTRA_MESSAGE", alarmItem.message)
+            //putExtra("EXTRA_ID", alarmItem)
         }
 
-        //The time is converted to milliseconds and then passed to the alarmManager
+        //The time is converted to milliseconds and then passed to the alarmManager and show in Logcat
         val t = alarmItem.time.atZone(ZoneId.systemDefault()).toEpochSecond() * 1000
-        Log.d("AlarmClockTrigger", "$t")
+        Log.d("AlarmClockTrigger milliseconds ", "$t")
 
         //The alarm is scheduled to be delivered at the specified time.
         alarmManager.setExactAndAllowWhileIdle(
@@ -41,7 +42,7 @@ class AndroidAlarmScheduler(
     }
 
     override fun cancel(alarmItem: AlarmItem) {
-        Log.d("AlarmClockTrigger","Alarm cancel")
+        Log.d("AlarmClockTrigger cancel", "Alarm cancel")
         alarmManager.cancel(
             PendingIntent.getBroadcast(
                 context,
@@ -51,4 +52,5 @@ class AndroidAlarmScheduler(
             )
         )
     }
+
 }
