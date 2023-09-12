@@ -61,7 +61,7 @@ class HomeFragment : Fragment() {
 
 
     //confirm and cancel the reminder at the same time, when the user clicks on the delete button
-    fun confirmAndDeleteReminder(remind: Remind, alarmItem: AlarmItem? = null) {
+    fun confirmAndDeleteReminder(remind: Remind) {
         val builder = AlertDialog.Builder(requireContext())
         val scheduler = (requireActivity().application as MyApplication).scheduler
 
@@ -70,9 +70,9 @@ class HomeFragment : Fragment() {
 
         builder.setPositiveButton("Yes") { dialog, _ ->
 
-            //TODO:cancel the alarm when user click yes
-
             viewModel.deleteReminder(remind)
+
+            remind.toAlarmItem()?.let { scheduler.cancel(it) }
 
             Toast.makeText(
                 requireContext(),
