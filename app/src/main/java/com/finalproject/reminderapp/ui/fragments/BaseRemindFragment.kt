@@ -46,11 +46,6 @@ abstract class BaseRemindFragment : Fragment() {
             binding.tvDate.text = it
         }
 
-        //get time from the viewModel and cancel the alarm
-        binding.btnStop.setOnClickListener {
-            //TODO: need to get the time and date from the database to cancel the alarm
-        }
-
 
         binding.btnSubmit.setOnClickListener {
             //TODO: need to get time,date and title from database to click update again
