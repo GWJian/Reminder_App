@@ -26,10 +26,13 @@ class AddRemindFragment : BaseRemindFragment() {
         binding.btnDate.setOnClickListener {
             val date = DateTimeUtil.getDate()
 
-            DatePickerDialog(requireContext(), { _, year, month, dayOfMonth ->
+            val datePickerDialog = DatePickerDialog(requireContext(), { _, year, month, dayOfMonth ->
                 binding.tvDate.text = "$dayOfMonth/${month + 1}/$year"
-                viewModel.setCustomDate(year, month + 1 , dayOfMonth)
-            }, date.year, date.month, date.day).show()
+                viewModel.setCustomDate(year, month + 1, dayOfMonth)
+            }, date.year, date.month, date.day)
+
+            datePickerDialog.datePicker.minDate = System.currentTimeMillis()
+            datePickerDialog.show()
         }
 
         binding.btnTime.setOnClickListener {
