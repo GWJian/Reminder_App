@@ -65,6 +65,7 @@ abstract class BaseRemindFragment : Fragment() {
             }
 
             alarmItem?.let {
+                Log.d("debugging", "test")
                 scheduler.schedule(it)
             }
         }

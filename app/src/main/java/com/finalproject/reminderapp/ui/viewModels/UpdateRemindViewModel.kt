@@ -46,7 +46,7 @@ class UpdateRemindViewModel(
                 //isActive.value = it.isActive
 
                 customDate = it.date.getDate()
-                customTime = it.date.getTime()
+                customTime = it.time.getTime()
             }
         }
     }
