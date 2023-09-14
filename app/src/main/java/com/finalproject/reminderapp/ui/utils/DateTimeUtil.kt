@@ -44,8 +44,8 @@ object DateTimeUtil {
 
         return if (dateTime.size == 2) {
             CustomTime(
-                dateTime[1].toInt(),
                 dateTime[0].toInt(),
+                dateTime[1].toInt(),
             )
         } else {
             null

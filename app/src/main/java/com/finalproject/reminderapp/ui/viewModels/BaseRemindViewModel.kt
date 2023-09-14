@@ -1,5 +1,6 @@
 package com.finalproject.reminderapp.ui.viewModels
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -71,6 +72,7 @@ abstract class BaseRemindViewModel(): ViewModel() {
 
     fun setCustomDate(yy: Int, mm: Int, dd: Int) {
         //set the date to the customDate
+        Log.d("debugging","$yy $mm $dd")
         customDate = CustomDate(yy, mm, dd)
     }
 
