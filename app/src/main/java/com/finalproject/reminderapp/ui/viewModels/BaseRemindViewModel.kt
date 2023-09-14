@@ -20,7 +20,6 @@ abstract class BaseRemindViewModel(): ViewModel() {
     val desc: MutableStateFlow<String> = MutableStateFlow("")
     val date: MutableStateFlow<String> = MutableStateFlow("")
     val time: MutableStateFlow<String> = MutableStateFlow("")
-    //val isActive:MutableStateFlow<Boolean> = MutableStateFlow(false)
     val error: MutableSharedFlow<String> = MutableSharedFlow()
     val finish: MutableSharedFlow<Unit> = MutableSharedFlow()
     protected var customDate: CustomDate? = null
@@ -55,7 +54,6 @@ abstract class BaseRemindViewModel(): ViewModel() {
                 desc = desc.value,
                 date = date.value,
                 time = time.value,
-                //isActive = isActive.value
             )
         } else {
             viewModelScope.launch {
@@ -72,7 +70,6 @@ abstract class BaseRemindViewModel(): ViewModel() {
 
     fun setCustomDate(yy: Int, mm: Int, dd: Int) {
         //set the date to the customDate
-        Log.d("debugging","$yy $mm $dd")
         customDate = CustomDate(yy, mm, dd)
     }
 
