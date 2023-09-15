@@ -43,7 +43,6 @@ class UpdateRemindViewModel(
                 desc.value = it.desc
                 date.value = it.date
                 time.value = it.time
-                //isActive.value = it.isActive
 
                 customDate = it.date.getDate()
                 customTime = it.time.getTime()

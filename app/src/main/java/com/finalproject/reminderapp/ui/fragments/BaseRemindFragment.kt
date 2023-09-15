@@ -47,10 +47,7 @@ abstract class BaseRemindFragment : Fragment() {
         }
 
 
-
-
         binding.btnSubmit.setOnClickListener {
-            //TODO: need to get time,date and title from database to click update again
             //abstract and submit the reminder to the database
             viewModel.submit()
 
@@ -65,7 +62,6 @@ abstract class BaseRemindFragment : Fragment() {
             }
 
             alarmItem?.let {
-                Log.d("debugging", "test")
                 scheduler.schedule(it)
             }
         }

@@ -20,12 +20,11 @@ class AndroidAlarmScheduler(
     override fun schedule(alarmItem: AlarmItem) {
         val intent = Intent(context, AlamReceiver::class.java).apply {
             putExtra("EXTRA_MESSAGE", alarmItem.message)
-            //putExtra("EXTRA_ID", alarmItem)
         }
 
         //The time is converted to milliseconds and then passed to the alarmManager and show in Logcat
-        val t = alarmItem.time.atZone(ZoneId.systemDefault()).toEpochSecond() * 1000
-        Log.d("AlarmClockTrigger milliseconds ", "$t")
+        //val t = alarmItem.time.atZone(ZoneId.systemDefault()).toEpochSecond() * 1000
+        //Log.d("AlarmClockTrigger milliseconds ", "$t")
 
         //The alarm is scheduled to be delivered at the specified time.
         alarmManager.setExactAndAllowWhileIdle(
@@ -42,7 +41,7 @@ class AndroidAlarmScheduler(
     }
 
     override fun cancel(alarmItem: AlarmItem) {
-        Log.d("AlarmClockTrigger cancel", "Alarm cancel")
+        //Log.d("AlarmClockTrigger cancel", "Alarm cancel")
         alarmManager.cancel(
             PendingIntent.getBroadcast(
                 context,

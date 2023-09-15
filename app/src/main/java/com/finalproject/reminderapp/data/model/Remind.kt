@@ -16,11 +16,7 @@ data class Remind(
     val desc: String,
     val date: String,
     val time: String,
-    //val isActive: Boolean = false, //to check is the alarm active or not
-)
-//    : Parcelable {
-//Combine AlarmItem to Remind
-{
+) {
     fun toAlarmItem(): AlarmItem? {
         val dateTemp = this.date.split("/")
         val dateTime = this.time.split(":")
