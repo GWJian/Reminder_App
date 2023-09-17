@@ -81,7 +81,7 @@
             app:icon="@drawable/ic_add"
             app:iconTint="#fff"
             app:iconSize="50dp"
-            app:backgroundTint="@color/cyan"
+            app:backgroundTint="@color/pastelBlue"
             android:layout_marginBottom="20dp"
             app:shapeAppearanceOverlay="@style/RoundedButton"
             android:contentDescription="@string/fab" />
