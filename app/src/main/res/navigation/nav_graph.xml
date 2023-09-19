@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.finalproject.reminderapp.ui.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_addRemindFragment"
+            app:destination="@id/addRemindFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter"
+            app:popExitAnim="@anim/fragment_exit" />
+        <action
+            android:id="@+id/action_homeFragment_to_updateRemindFragment"
+            app:destination="@id/updateRemindFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter"
+            app:popExitAnim="@anim/fragment_exit" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addRemindFragment"
+        android:name="com.finalproject.reminderapp.ui.fragments.AddRemindFragment"
+        android:label="fragment_add_remind"
+        tools:layout="@layout/fragment_add_update_remind" />
+    <fragment
+        android:id="@+id/updateRemindFragment"
+        android:name="com.finalproject.reminderapp.ui.fragments.UpdateRemindFragment"
+        android:label="fragment_update_remind"
+        tools:layout="@layout/fragment_add_update_remind">
+        <argument
+            android:name="reminderId"
+            app:argType="integer" />
+    </fragment>
+</navigation>
